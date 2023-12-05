@@ -4,6 +4,7 @@ import axios from "axios";
 const App = () => {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
+
   useEffect(() => {
     async function fetchData() {
       // You can await here
@@ -41,7 +42,7 @@ const App = () => {
             .filter((item) => {
               return search.toLowerCase() === ""
                 ? item
-                : item.name.toLowerCase().includes(search);
+                : item.website.toLowerCase().includes(search);
             })
             .map((item) => (
               <tr key={item.id}>
