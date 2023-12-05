@@ -42,7 +42,7 @@ const App = () => {
             .filter((item) => {
               return search.toLowerCase() === ""
                 ? item
-                : item.website.toLowerCase().includes(search);
+                : item.name.toLowerCase().includes(search);
             })
             .map((item) => (
               <tr key={item.id}>
