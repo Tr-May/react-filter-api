@@ -22,7 +22,7 @@ const App = () => {
     <div className="container my-3 bg-light">
       <form>
         <input
-          type="text"
+          type="search"
           className="form-control"
           placeholder="Search by Name"
           onChange={(e) => setSearch(e.target.value)}
