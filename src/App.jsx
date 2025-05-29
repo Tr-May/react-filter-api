@@ -6,6 +6,7 @@ const App = () => {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,6 +19,7 @@ const App = () => {
           throw new Error("Network response was not ok");
         }
         const jsonData = await response.json();
+
         setData(jsonData);
       } catch (err) {
         setError(err.message);
@@ -36,6 +38,10 @@ const App = () => {
         <p>Loading data...</p>
       </div>
     );
+  }
+
+  if (error) {
+    return <div className="error-message">Error: {error}</div>;
   }
 
   return (
