@@ -14,7 +14,7 @@ const App = () => {
         // Using JSONPlaceholder API for example data
         const response = await fetch(
           // "https://jsonplaceholder.typicode.com/users"
-          "https://dummyjson.com/users"
+          "https://dummyjson.com/users?limit=10"
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
