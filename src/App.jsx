@@ -13,14 +13,16 @@ const App = () => {
       try {
         // Using JSONPlaceholder API for example data
         const response = await fetch(
-          "https://jsonplaceholder.typicode.com/users"
+          // "https://jsonplaceholder.typicode.com/users"
+          "https://dummyjson.com/users"
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         const jsonData = await response.json();
+        // console.log(jsonData.users);
 
-        setData(jsonData);
+        setData(jsonData.users);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -50,17 +52,21 @@ const App = () => {
         <input
           type="search"
           className="form-control"
-          placeholder="Search by Name"
+          placeholder="Search by First Name"
           onChange={(e) => setSearch(e.target.value)}
         />
       </form>
       <table className="table table-striped mt-3">
         <thead>
           <tr>
-            <th>ID</th>
+            {/* <th>ID</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Website</th>
+            <th>Website</th> */}
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
           </tr>
         </thead>
         <tbody>
@@ -68,14 +74,14 @@ const App = () => {
             .filter((item) => {
               return search.toLowerCase() === ""
                 ? item
-                : item.name.toLowerCase().includes(search.toLowerCase());
+                : item.firstName.toLowerCase().includes(search.toLowerCase());
             })
             .map((item) => (
               <tr key={item.id}>
                 <td>{item.id}</td>
-                <td>{item.name}</td>
+                <td>{item.firstName}</td>
+                <td>{item.lastName}</td>
                 <td>{item.email}</td>
-                <td>{item.website}</td>
               </tr>
             ))}
         </tbody>
